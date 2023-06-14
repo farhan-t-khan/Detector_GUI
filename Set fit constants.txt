@@ -1,0 +1,44 @@
+Below is the code to set fitA, fitB and fitC.
+You can send this packet anytime you want and it will put those values in.
+It is an ASCII string. There must be 3 values in there separated by a coma
+and terminated by a zero. The string below looks like this.
+ 
+Const,-97.12,45.72,1230
+ 
+That last number is 123 then followed by a zero
+ 
+unsigned char wb[100];
+int sent;
+ 
+        wPrintf("sending calibrate");
+        wb[0] = 'C';
+        wb[1] = 'o';
+        wb[2] = 'n';
+        wb[3] = 's';
+        wb[4] = 't';
+        wb[5] = ',';
+ 
+        wb[6] = '-';
+        wb[7] = '9';
+        wb[8] = '7';
+        wb[9] = '.';
+        wb[10] = '1';
+        wb[11] = '2';
+ 
+        wb[12] = ',';
+ 
+        wb[13] = '4';
+        wb[14] = '5';
+        wb[15] = '.';
+        wb[16] = '7';
+        wb[17] = '2';
+ 
+        wb[18] = ',';
+ 
+        wb[19] = '1';
+        wb[20] = '2';
+        wb[21] = '3';
+        wb[22] = 0;
+ 
+        sent = send(BtSocket,(char *)wb,23,0);
+        flush();

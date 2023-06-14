@@ -1,0 +1,38 @@
+[General]
+SurveyDataPath=C:\BascomturnerMLDS\Data\Survey
+24hClock=1
+SubtractBackground=0
+XAxis=30
+YAxis=100
+RefreshConnection_ms = 60000
+
+[Calibration]
+DataPath=C:\BascomturnerMLDS\Data\Calibration
+CalDuePeriod(days)=30
+LastCalibration=8-9-2022 9:0
+CalibrationCell=45
+ResetCFlashOnStart=0
+
+[Alarm]
+WavFile=C:\BascomturnerMLDS\foghorn.wav
+AlarmLevel=10
+
+[FileNameInfo]
+Location=Norwood
+Date=1
+Time=1
+
+
+[Debug]
+ppm_Measurement = 50
+CalibrationSucess = 1
+BumpTestSucess = 1
+Bluetooth = 0
+Laser = 0
+GPS = 0
+Battery = 0
+StabilizingTimer = 20
+
+[Flash]
+header = BASCOMTURNERMLDS,19.10.25,19.01.17,230,2500,16,08,64,60,53.7181,0.27555,0.15123,1.06611
+calrecord = 12-4-2018,50,50,1.0,50

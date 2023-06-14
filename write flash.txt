@@ -1,0 +1,59 @@
+
+ 
+ 
+void write_flash_block()
+    {
+int x,y,z,nbytes,i,sent;
+unsigned char buffer[100];
+unsigned char wb[20];
+ 
+ 
+    y=0;
+    for(x=0;x<1536;++x)
+        {
+        Flash_Block[x] = y;
+        y = y + 1;
+        if(y == 255)
+            y=0;
+        }
+ 
+    flush();
+    wb[0] = 'W';
+    wb[1] = 'r';
+    wb[2] = 'i';
+    wb[3] = 't';
+    wb[4] = 'f';
+    sent = send(BtSocket,(char *)wb,5,0);
+    flush();
+ 
+    Sleep(500);
+ 
+    y=0;
+    for(x=0;x<37;++x)
+        {
+        for(z=0;z<41;++z)
+            {
+            buffer[z] = Flash_Block[y];
+            y = y + 1;
+            }
+ 
+        sent = send(BtSocket,(char *)buffer,41,0);
+        Sleep(100);
+        }
+ 
+    Sleep(100);
+ 
+    for(z=0;z<19;++z)
+        {
+        buffer[z] = Flash_Block[y];
+        y = y + 1;
+        }
+//
+//    Send 41 but really only 19 of that are used on the other end
+//    The other side expects a certain packet size
+//
+    sent = send(BtSocket,(char *)buffer,41,0);
+ 
+    wPrintf("Done");
+    }
+ 

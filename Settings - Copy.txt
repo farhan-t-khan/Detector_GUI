@@ -1,0 +1,37 @@
+[General]
+SurveyDataPath=C:\Bascom\Survey
+24hClock=1
+SubtractBackground=1
+XAxis=20
+YAxis=80
+RefreshConnection_ms = 60000
+
+[Calibration]
+DataPath=C:\Bascom\Calibration
+CalDuePeriod(days)=30
+LastCalibration=12-4-2018 13:15
+CalibrationCell=45
+
+[Alarm]
+WavFile=C:\Bascomturner\foghorn.wav
+AlarmLevel=10
+
+[FileNameInfo]
+Location=Bellmore
+Date=1
+Time=1
+
+
+[Debug]
+ppm_Measurement = 50
+CalibrationSucess = 1
+BumpTestSucess = 1
+Bluethooth = 0
+Laser = 0
+GPS = 0
+Battery = 0
+StabilizingTimer = 45
+
+[Flash]
+header = BT00001,SWV1.0,HWV1.1;
+calrecord = 12-4-2018,43,1.0,45;

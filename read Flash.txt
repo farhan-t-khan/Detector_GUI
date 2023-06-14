@@ -1,0 +1,55 @@
+void read_flash_block()
+    {
+int x,y,z,nbytes,i,sent;
+unsigned char buffer[100];
+unsigned char wb[20];
+ 
+ 
+ 
+    flush();
+    wb[0] = 'R';
+    wb[1] = 'e';
+    wb[2] = 'a';
+    wb[3] = 'd';
+    wb[4] = 'f';
+    sent = send(BtSocket,(char *)wb,5,0);
+    flush();
+ 
+    Sleep(500);
+ 
+    y=0;
+    for(x=0;x<37;++x)
+        {
+        nbytes = ReadBluetooth((unsigned char *)rx1);
+ 
+        Crc8=0;
+        for(i=0;i<rxsize-1;++i)
+            UpdateCRC8(rx1[i]);
+ 
+        if(Crc8 != rx1[rxsize-1])
+            wPrintf("CRC Error");
+ 
+        for(z=2;z<43;++z)
+            {
+            Flash_Block[y] = rx1[z];
+            y = y + 1;
+            }
+        }
+    nbytes = ReadBluetooth((unsigned char *)rx1);
+ 
+    Crc8=0;
+    for(i=0;i<rxsize-1;++i)
+        UpdateCRC8(rx1[i]);
+ 
+    if(Crc8 != rx1[rxsize-1])
+        wPrintf("CRC Error");
+ 
+    for(z=2;z<21;++z)
+        {
+        Flash_Block[y] = rx1[z];
+        y = y + 1;
+        }
+wPrintf("Done");
+    }
+ 
+ 
